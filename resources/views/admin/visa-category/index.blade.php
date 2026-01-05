@@ -1,22 +1,18 @@
 @extends('admin.layouts.app')
-
 @section('title', 'Visa Category List')
-
 @section('content')
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
-
             <div class="card shadow-sm border-0 rounded-0 my-4">
                 <div class="card-body p-4">
 
-                    <!-- Card Header -->
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
 
                             <h4 class="card-title text-dark fw-bold m-0">Visa Category List</h4>
                         </div>
                         <a href="{{ url('admin/visa-category/create') }}"
-                            class="btn app-btn-primary rounded-circle d-flex align-items-center    justify-content-center btn btn-sm btn-outline-secondary rounded-pill px-2  "
+                            class="btn app-btn-primary rounded-circle d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary rounded-pill px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
@@ -30,7 +26,7 @@
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Title</th>
                                         {{-- <th class="text-dark">Description</th> --}}
-                                        <th class="text-dark">Image</th>
+                                        <th class="text-dark">Category Image</th>
                                         <th class="text-dark">Category Logo</th>
                                         <th class="text-dark"> Status</th>
                                         <th class="text-dark">Date</th>
@@ -82,9 +78,7 @@
                                                         <i class="fa-solid fa-trash me-1"></i>
                                                     </button>
 
-                                                </div>
-
-
+                                                </div> 
                                                 {{-- Delete Modal --}}
                                                 <div class="modal fade" id="deleteModal{{ $category->id }}" tabindex="-1"
                                                     aria-labelledby="deleteModalLabel{{ $category->id }}"

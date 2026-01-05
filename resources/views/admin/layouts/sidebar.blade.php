@@ -4,7 +4,6 @@
             style="display: none; font-size: 26px; cursor: pointer;">&times;</span>
     </div>
 
-    <!-- Navbar (included from separate file) -->
     <div class="sidenav-menu">
         @include('admin.layouts.navbar')
     </div>
@@ -14,9 +13,10 @@
         <h4 class="h5">Dashboard</h4>
         <ul>
             <li>
-                <a href="{{ url('admin/dashboard') }}" class="sidenav-menu__link">
+                <a href="{{ url('admin/dashboard') }}"
+                    class="sidenav-menu__link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-gauge-high"></i> <!-- Dashboard icon -->
+                        <i class="fa-solid fa-gauge-high"></i>
                         <span class="ms-2">Dashboard</span>
                     </div>
                 </a>
@@ -29,14 +29,14 @@
         <h4 class="h5">My Content</h4>
         <ul>
             <li>
-                <a id="companyMenu" href="{{ url('admin/visa-category') }}" class="sidenav-menu__link company-link">
+                <a href="{{ url('admin/visa-category') }}"
+                    class="sidenav-menu__link {{ request()->is('admin/visa-category*') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-passport"></i> <!-- Visa Category icon -->
+                        <i class="fa-solid fa-passport"></i>
                         <span class="ms-2">Visa Category</span>
                     </div>
-                </a>
+                </a> 
             </li>
-
         </ul>
     </div>
 </div>

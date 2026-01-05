@@ -53,7 +53,7 @@
                                     <label class="form-label">Category Logo</label>
                                     <input type="file" class="form-control" name="category_logo" id="imageInputLogo"
                                         accept="image/png,image/jpeg,image/webp">
-                                    @if ($visaCategory->image)
+                                    @if ($visaCategory->category_logo)
                                         <div class="mt-3"> <img id="previewImageLogo"
                                                 src="{{ $visaCategory->category_logo }}"
                                                 class="img-fluid rounded shadow-sm border"
@@ -69,7 +69,7 @@
                             </button>
                                 <button type="submit" name="publish_is" value="2" class="btn btn-secondary px-4">
                                     Update
-                                </button> 
+                                </button>
                         </div>
                     </form>
                 </div>
@@ -99,7 +99,7 @@
                     preview.src = URL.createObjectURL(file);
                 }
             });
-        });
+        }); 
 
 
         document.addEventListener("DOMContentLoaded", function() {

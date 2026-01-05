@@ -117,20 +117,13 @@
                                             $filePath = null;
 
                                             if ($img) {
-
                                                 if (Str::startsWith($img, ['http://', 'https://'])) {
                                                     $src = $img;
-                                                }
-
-
-                                                elseif (Str::startsWith($img, ['/uploads', 'uploads'])) {
+                                                } elseif (Str::startsWith($img, ['/uploads', 'uploads'])) {
                                                     $cleanPath = ltrim($img, '/');
                                                     $src = asset($cleanPath);
                                                     $filePath = public_path($cleanPath);
-                                                }
-
-
-                                                else {
+                                                } else {
                                                     $src = asset('uploads/visa-category/' . $img);
                                                     $filePath = public_path('uploads/visa-category/' . $img);
                                                 }
@@ -138,8 +131,8 @@
                                         @endphp
 
                                         @if ($src && (!$filePath || file_exists($filePath)))
-                                            <img src="{{ $src }}" class="img-fluid rounded shadow-sm border" alt="Visa Image"
-                                                style="width:120px;border-radius:8px;">
+                                            <img src="{{ $src }}" class="img-fluid rounded shadow-sm border"
+                                                alt="Visa Image" style="width:120px;border-radius:8px;">
                                         @else
                                             <span class="text-muted">No Image</span>
                                         @endif
@@ -157,45 +150,32 @@
                                             $filePath = null;
 
                                             if ($img) {
-
                                                 if (Str::startsWith($img, ['http://', 'https://'])) {
                                                     $src = $img;
-                                                }
-
-
-                                                elseif (Str::startsWith($img, ['/uploads', 'uploads'])) {
+                                                } elseif (Str::startsWith($img, ['/uploads', 'uploads'])) {
                                                     $cleanPath = ltrim($img, '/');
                                                     $src = asset($cleanPath);
                                                     $filePath = public_path($cleanPath);
-                                                }
-
-
-                                                else {
+                                                } else {
                                                     $src = asset('uploads/category-logo/' . $img);
                                                     $filePath = public_path('uploads/category_logo/' . $img);
                                                 }
                                             }
                                         @endphp
-
                                         @if ($src && (!$filePath || file_exists($filePath)))
-                                            <img src="{{ $src }}" class="img-fluid rounded shadow-sm border" alt="Visa Image"
-                                                style="width:120px;border-radius:8px;">
+                                            <img src="{{ $src }}" class="img-fluid rounded shadow-sm border"
+                                                alt="Visa Image" style="width:120px;border-radius:8px;">
                                         @else
                                             <span class="text-muted">No Image</span>
                                         @endif
-
-
                                     </td>
-
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Image Preview Modal -->

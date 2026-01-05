@@ -61,20 +61,15 @@ class VisaCategoryController extends Controller
     // Show edit form
     public function edit($encodedId)
     {
-
         $id = base64_decode($encodedId);
         $visaCategory = VisaCategory::findOrFail($id);
-
-
         return view('admin.visa-category.edit', compact('visaCategory'));
     }
 
     // Update visa category
     public function update(Request $request, $encodedId)
     {
-
         $id = base64_decode($encodedId);
-
         $request->validate([
             "title" => "required",
             "short_description" => "required",
@@ -107,9 +102,7 @@ class VisaCategoryController extends Controller
             $file->move(public_path('uploads/category_logo'), $imgName);
             $input['category_logo'] = $imgName;
         }
-
         $visa->update($input);
-
         return redirect()->route('visa-category.index')->with('success', 'Visa Category Updated Successfully');
     }
 
@@ -120,19 +113,14 @@ class VisaCategoryController extends Controller
         $visa = VisaCategory::findOrFail($id);
 
         if (!empty($visa->image)) {
-
-            $path = public_path('uploads/visa-category/' . $visa->image);
-
+            $path = public_path('uploads/visa-category/' . basename($visa->image));
             if (File::exists($path)) {
                 File::delete($path);
             }
         }
 
-
         if (!empty($visa->category_logo)) {
-
-            $path = public_path('uploads/category_logo/' . $visa->category_logo);
-
+            $path = public_path('uploads/category_logo/' . basename($visa->category_logo));
             if (File::exists($path)) {
                 File::delete($path);
             }

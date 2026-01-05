@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class VisaCategory extends Model
 {
 
-
     protected $table = "visa_categories";
 
     protected $fillable = [
@@ -21,7 +20,6 @@ class VisaCategory extends Model
         'date_modified',
     ];
 
-
     public function getImageAttribute($value)
     {
         if ($value != NULL) {
@@ -29,7 +27,6 @@ class VisaCategory extends Model
         }
         return null;
     }
-
 
     public function getCategoryLogoAttribute($value)
     {

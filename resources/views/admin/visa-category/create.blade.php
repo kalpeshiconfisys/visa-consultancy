@@ -21,8 +21,7 @@
                             <div class="col-lg-7 col-md-12">
                                 <div>
                                     <label class="form-label fw-bold">Visa Title</label>
-                                    <input type="text" class="form-control" name="title" id="title"
-                                          required>
+                                    <input type="text" class="form-control" name="title" id="title" required>
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label fw-bold">Short Description</label>
@@ -34,10 +33,9 @@
                                     <textarea id="editor" class="form-control" name="description" rows="5" placeholder="Write full details..."
                                         required> </textarea>
                                 </div>
-
                             </div>
                             <div class="col-lg-5 col-md-12">
-                                <div class="mt-3">
+                                <div class="mt-0">
                                     <label class="form-label fw-bold">Featured Image</label>
                                     <input type="file" class="form-control" name="image" id="imageInput"
                                         accept="image/png,image/jpeg,image/webp">
@@ -47,9 +45,8 @@
                                             style="width:120px;border-radius:8px;">
                                     </div>
                                 </div>
-                                {{-- <div class="col-lg-5 col-md-12"> --}}
-                                <div class="mt-3">
-                                    <label class="form-label fw-bold">Category Logo</label>
+                                <div class="mt-1">
+                                    <label class="form-label fw-bold mt-1">Category Logo</label>
                                     <input type="file" class="form-control" name="category_logo" id="imageInputLogo"
                                         accept="image/png,image/jpeg,image/webp">
                                     <div class="mt-3">
@@ -59,9 +56,7 @@
                                             style="width:120px;border-radius:8px;">
                                     </div>
                                 </div>
-                            {{-- </div> --}}
-                            </div>
-
+                            </div> 
                         </div>
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1" class="btn btn-secondary px-4">
@@ -76,11 +71,9 @@
             </div>
         </div>
     </div>
-
     <!-- CKEditor -->
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
@@ -116,7 +109,6 @@
         });
 
         $(document).ready(function() {
-
             $('#editor').summernote({
                 height: 600,
                 toolbar: [
@@ -148,7 +140,6 @@
                     }
                 }
             });
-
         });
     </script>
 
