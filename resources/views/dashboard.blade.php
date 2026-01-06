@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', ' ')
+@section('title', 'Admin Dashboard ')
 
 @section('content')
     <div class="content-wrapper d-flex justify-content-center">

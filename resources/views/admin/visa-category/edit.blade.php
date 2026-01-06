@@ -23,17 +23,17 @@
                                 <div>
                                     <label class="form-label">Visa Title</label>
                                     <input type="text" class="form-control" name="title" id="title"
-                                        placeholder="Enter Visa Category Title"
+
                                         value="{{ old('title', $visaCategory->title) }}" required>
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label">Short Description</label>
-                                    <textarea class="form-control" name="short_description" rows="2" placeholder="Write short introduction..."
+                                    <textarea class="form-control" name="short_description" rows="2"
                                         required>{{ old('short_description', $visaCategory->short_description) }}</textarea>
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label">Full Description</label>
-                                    <textarea id="editor" class="form-control" name="description" rows="5" placeholder="Write full details..."
+                                    <textarea id="editor" class="form-control" name="description" rows="5"
                                         required>{{ old('description', $visaCategory->description) }}</textarea>
                                 </div>
                             </div>
@@ -67,9 +67,9 @@
                             <button type="submit" name="publish_is" value="1" class="btn btn-secondary px-4">
                                 Draft
                             </button>
-                                <button type="submit" name="publish_is" value="2" class="btn btn-secondary px-4">
+                            <button type="submit" name="publish_is" value="2" class="btn btn-secondary px-4">
                                     Update
-                                </button>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -99,7 +99,7 @@
                     preview.src = URL.createObjectURL(file);
                 }
             });
-        }); 
+        });
 
 
         document.addEventListener("DOMContentLoaded", function() {

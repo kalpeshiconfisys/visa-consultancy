@@ -80,10 +80,11 @@ class VisaCategoryController extends Controller
         $visa = VisaCategory::findOrFail($id);
         $input = $request->only("title", "short_description", "description", "publish_is");
         $input['date_modified'] = Carbon::now()->toDateTimeString();
+ 
 
         if ($request->hasFile('image')) {
-            if ($visa->image && File::exists(public_path('uploads/visa-category/' . $visa->image))) {
-                File::delete(public_path('uploads/visa-category/' . $visa->image));
+            if ($visa->image && File::exists(public_path('uploads/visa-category/' . basename($visa->image)))) {
+                File::delete(public_path('uploads/visa-category/' . basename($visa->image)));
             }
 
             $file = $request->file('image');
@@ -93,8 +94,8 @@ class VisaCategoryController extends Controller
         }
 
         if ($request->hasFile('category_logo')) {
-            if ($visa->image && File::exists(public_path('uploads/category_logo/' . $visa->image))) {
-                File::delete(public_path('uploads/category_logo/' . $visa->image));
+            if ($visa->category_logo && File::exists(public_path('uploads/category_logo/' . basename($visa->category_logo)))) {
+                File::delete(public_path('uploads/category_logo/' . basename($visa->category_logo)));
             }
 
             $file = $request->file('category_logo');
@@ -102,6 +103,7 @@ class VisaCategoryController extends Controller
             $file->move(public_path('uploads/category_logo'), $imgName);
             $input['category_logo'] = $imgName;
         }
+
         $visa->update($input);
         return redirect()->route('visa-category.index')->with('success', 'Visa Category Updated Successfully');
     }

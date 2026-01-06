@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/admin', function () {
-    //  return view("welcome");
     if (Session::has('admin_id')) {
         return redirect(url('admin/dashboard'));
     }
@@ -25,7 +24,6 @@ Route::get('/admin', function () {
 
 
 Route::get('/', function () {
-    //  return view("welcome");
     if (Session::has('admin_id')) {
         return redirect(url('admin/dashboard'));
     }
@@ -33,35 +31,42 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/login', [Admin\Auth\AuthController::class, 'login'])->name('login');
-    Route::post('login', [Admin\Auth\AuthController::class, 'loginSubmit'])->name('admin.login.submit');
+    Route::post('login', [Admin\Auth\AuthController::class, 'loginSubmit'])->name('login.submit');
 
     Route::get('/register', [Admin\Auth\AuthController::class, 'register']);
-    Route::post('register', [Admin\Auth\AuthController::class, 'registerSubmit'])->name('admin.register.submit');
+    Route::post('register', [Admin\Auth\AuthController::class, 'registerSubmit'])->name('register.submit');
 
     Route::get('/logout', [Admin\Auth\AuthController::class, 'logout']);
 
     Route::middleware(['auth:admin'])->group(function () {
+
         Route::get('/dashboard', function () {
             return view('dashboard');
         });
 
+        // VISA CATEGORY
         Route::resource('visa-category', Admin\VisaCategory\VisaCategoryController::class);
 
-         Route::prefix('visa-category')->group(function () {
+        // OLD MANUAL ROUTES → YOU CAN DELETE (OPTIONAL)
+        Route::prefix('visa-category')->group(function () {
             Route::get('list', [Admin\VisaCategory\VisaCategoryController::class, 'index']);
-            Route::get('show/{id} ',[Admin\VisaCategory\VisaCategoryController::class, 'show']);
-            Route::get('create/',        [Admin\VisaCategory\VisaCategoryController::class, 'create']);
-            Route::post('add/',               [Admin\VisaCategory\VisaCategoryController::class, 'store']);
-            Route::get('edit/{id} ', [Admin\VisaCategory\VisaCategoryController::class, 'edit']);
-            Route::post('update/{id}',       [Admin\VisaCategory\VisaCategoryController::class, 'update']);
-            Route::delete('delete/{id} ', [Admin\VisaCategory\VisaCategoryController::class, 'destroy']);
+            Route::get('show/{id}',[Admin\VisaCategory\VisaCategoryController::class, 'show']);
+            Route::get('create', [Admin\VisaCategory\VisaCategoryController::class, 'create']);
+            Route::post('add', [Admin\VisaCategory\VisaCategoryController::class, 'store']);
+            Route::get('edit/{id}', [Admin\VisaCategory\VisaCategoryController::class, 'edit']);
+            Route::post('update/{id}', [Admin\VisaCategory\VisaCategoryController::class, 'update']);
+            Route::delete('delete/{id}', [Admin\VisaCategory\VisaCategoryController::class, 'destroy']);
         });
+
+        // VISA SUB CATEGORY (IMPORTANT)
+        Route::resource('visa-sub-category', Admin\VisaCategory\VisaSubCategoryController::class);
     });
 
 });
+
 
 
 

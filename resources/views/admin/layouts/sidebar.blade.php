@@ -35,7 +35,18 @@
                         <i class="fa-solid fa-passport"></i>
                         <span class="ms-2">Visa Category</span>
                     </div>
-                </a> 
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="{{ url('admin/visa-sub-category') }}"
+                    class="sidenav-menu__link {{ request()->is('admin/visa-sub-category*') ? 'active' : '' }}">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-passport"></i>
+                        <span class="ms-2">Visa Sub Category</span>
+                    </div>
+                </a>
             </li>
         </ul>
     </div>
