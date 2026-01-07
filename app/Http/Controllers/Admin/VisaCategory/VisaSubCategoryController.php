@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\VisaCategory;
 use App\Http\Controllers\Controller;
 use App\Models\VisaCategory;
 use App\Models\VisaSubCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class VisaSubCategoryController extends Controller
@@ -12,7 +13,7 @@ class VisaSubCategoryController extends Controller
     // List
     public function index()
     {
-        $subCategories = VisaSubCategory::latest()->paginate(10);
+        $subCategories = VisaSubCategory::with('category')->latest()->paginate(10);
         return view('admin.visa-sub-category.index', compact('subCategories'));
     }
 
@@ -42,7 +43,8 @@ class VisaSubCategoryController extends Controller
                 "description" => $request->description[$key] ?? null,
                 "bullets"     => isset($request->bullets[$key]) ? json_encode($request->bullets[$key]) : null,
                 "publish_is"  => $request->publish_is,
-                'content_type' => $request->content_type
+                'content_type' => $request->content_type,
+                'date_modified' => Carbon::now()->toDateTimeString(),
             ]);
         }
 
@@ -89,7 +91,8 @@ class VisaSubCategoryController extends Controller
                                         ? json_encode($request->bullets[$key])
                                         : null,
                     "publish_is"  => $request->publish_is,
-                    'content_type' => $request->content_type
+                    'content_type' => $request->content_type,
+                     'date_modified' => Carbon::now()->toDateTimeString(),
                 ]);
                 if($request->content_type == 'description'){
                    $sub->bullets = NULL;
@@ -99,7 +102,7 @@ class VisaSubCategoryController extends Controller
                 if($request->content_type == 'bullets'){
                     $sub->description = NULL;
                     $sub->save();
-                }  
+                }
             }
         }
 
@@ -120,4 +123,13 @@ class VisaSubCategoryController extends Controller
             ->route('admin.visa-sub-category.index')
             ->with('success', 'Visa Sub Category Deleted Successfully');
     }
+
+    public function show($encodedId)
+    {
+        $id = base64_decode($encodedId);
+        $visaSubCategory  = VisaSubCategory::findOrFail($id);
+
+        return view('admin.visa-sub-category.show', compact('visaSubCategory'));
+    }
+
 }

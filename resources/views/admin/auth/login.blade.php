@@ -9,14 +9,19 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+        body {
+            font-style: italic;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
 
     <!-- Toast Alerts -->
     <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055;">
-        @if(session('success'))
-            <div class="toast show bg-success text-white custom-alert " >
+        @if (session('success'))
+            <div class="toast show bg-success text-white custom-alert ">
                 <div class="d-flex">
                     <div class="toast-body">
                         {{ session('success') }}
@@ -26,7 +31,7 @@
             </div>
         @endif
 
-        @if(session('error'))
+        @if (session('error'))
             <div class="toast show bg-danger text-white custom-alert">
                 <div class="d-flex">
                     <div class="toast-body">
@@ -62,20 +67,14 @@
 
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
-                            <input type="email"
-                                   name="email"
-                                   class="form-control"
-                                   placeholder="Enter your email"
-                                   required>
+                            <input type="email" name="email" class="form-control" placeholder="Enter your email"
+                                required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password"
-                                   name="password"
-                                   class="form-control"
-                                   placeholder="Enter password"
-                                   required>
+                            <input type="password" name="password" class="form-control" placeholder="Enter password"
+                                required>
                         </div>
 
                         <button class="btn btn-primary w-100 py-2 button">
@@ -93,7 +92,7 @@
             <!-- RIGHT IMAGE -->
             <div class="col-lg-6 col-md-5 d-none d-md-block p-0">
                 <div class="h-100"
-                     style="background:url('{{ asset('assets/images/background/hire-visa-consultant.jpg') }}') center/cover no-repeat;">
+                    style="background:url('{{ asset('assets/images/background/hire-visa-consultant.jpg') }}') center/cover no-repeat;">
                 </div>
             </div>
 
@@ -103,7 +102,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
 

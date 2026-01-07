@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/visa-category-list', [Api\VisaController::class, 'visa_cateory_list']);
+Route::get('/visa-sub-category-list/{visa_category_id}', [Api\VisaController::class, 'visa_sub_cateory_list']);

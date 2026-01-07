@@ -22,4 +22,10 @@ class VisaSubCategory extends Model
     protected $casts = [
         'bullets' => 'array'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(VisaCategory::class, 'category_id', 'id');
+    }
+
 }

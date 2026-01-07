@@ -7,7 +7,7 @@
                 <div class="card-body p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0">Visa Sub Category List</h4>
+                            <h4 class="card-title text-dark fw-bold m-0 fst-italic ">Visa Sub Category List</h4>
                         </div>
                         <a href="{{ url('admin/visa-sub-category/create') }}"
                             class="btn app-btn-primary rounded-circle d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary rounded-pill px-2  "
@@ -17,11 +17,12 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table align-middle" style="min-width: 1000px;">
+                            <table id="example" class="table table align-middle fst-italic" style="min-width: 1000px;">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Title</th>
+                                        <th class="text-dark">Visa Category</th>
                                         <th class="text-dark"> Status</th>
                                         <th class="text-dark">Date</th>
                                         <th class="text-dark">Action</th>
@@ -30,16 +31,17 @@
                                 <tbody>
                                     @forelse ($subCategories as $key => $category)
                                         <tr>
-                                            <td>{{ $subCategories->firstItem() + $key }}</td>
-                                            <td>{{ $category->title }}</td>
-                                            <td>
+                                            <td class="fw-bold">{{ $subCategories->firstItem() + $key }}</td>
+                                            <td class="fw-bold">{{ $category->title }}</td>
+                                            <td class="fw-bold">{{ $category->category->title }}</td>
+                                            <td class="fw-bold" >
                                                 @if ($category->publish_is == 1)
                                                     <span class="text-danger">Draft</span>
                                                 @else
                                                     <span class="text-success">Publish</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="fw-bold">
                                                 {{ $category->date_modified
                                                     ? \Carbon\Carbon::parse($category->date_modified)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
                                                     : '-' }}
@@ -49,7 +51,7 @@
                                                 <div class="d-flex align-items-center gap-2">
 
                                                     {{-- VIEW --}}
-                                                    <a href="{{ url('admin/visa-sub-category/show/' . trim(base64_encode($category->id), '=')) }}"
+                                                    <a href="{{ route('admin.visa-sub-category.show' , trim(base64_encode($category->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary rounded-pill px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>

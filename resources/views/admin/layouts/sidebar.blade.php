@@ -17,7 +17,7 @@
                     class="sidenav-menu__link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
                         <i class="fa-solid fa-gauge-high"></i>
-                        <span class="ms-2">Dashboard</span>
+                        <span class="ms-2 fw-bold fst-italic">Dashboard</span>
                     </div>
                 </a>
             </li>
@@ -27,29 +27,42 @@
     <!-- My Content Section -->
     <div class="sidenav-menu">
         <h4 class="h5">My Content</h4>
+
         <ul>
+            {{-- Visa Category --}}
             <li>
                 <a href="{{ url('admin/visa-category') }}"
                     class="sidenav-menu__link {{ request()->is('admin/visa-category*') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-passport"></i>
-                        <span class="ms-2">Visa Category</span>
+                        <i class="fa-solid fa-globe "></i>
+                        <span class="ms-2 fw-bold fst-italic">Visa Category</span>
                     </div>
                 </a>
             </li>
-        </ul>
-        <ul>
+
+            {{-- Visa Sub Category --}}
             <li>
                 <a href="{{ url('admin/visa-sub-category') }}"
                     class="sidenav-menu__link {{ request()->is('admin/visa-sub-category*') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-passport"></i>
-                        <span class="ms-2">Visa Sub Category</span>
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="ms-2 fw-bold fst-italic">Visa Sub Category</span>
                     </div>
                 </a>
             </li>
+
+            {{-- Optional Future Items Example (Delete if not needed) --}}
+            {{-- <li>
+            <a href="#" class="sidenav-menu__link">
+                <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="ms-2">Approved Visas</span>
+                </div>
+            </a>
+        </li> --}}
         </ul>
     </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

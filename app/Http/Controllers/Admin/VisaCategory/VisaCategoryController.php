@@ -55,7 +55,7 @@ class VisaCategoryController extends Controller
 
         VisaCategory::create($input);
 
-        return redirect()->route('visa-category.index')->with('success', 'Visa Category Created Successfully');
+        return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Created Successfully');
     }
 
     // Show edit form
@@ -80,7 +80,7 @@ class VisaCategoryController extends Controller
         $visa = VisaCategory::findOrFail($id);
         $input = $request->only("title", "short_description", "description", "publish_is");
         $input['date_modified'] = Carbon::now()->toDateTimeString();
- 
+
 
         if ($request->hasFile('image')) {
             if ($visa->image && File::exists(public_path('uploads/visa-category/' . basename($visa->image)))) {
@@ -105,7 +105,7 @@ class VisaCategoryController extends Controller
         }
 
         $visa->update($input);
-        return redirect()->route('visa-category.index')->with('success', 'Visa Category Updated Successfully');
+        return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Updated Successfully');
     }
 
     // Delete visa category
